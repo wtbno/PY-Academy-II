@@ -31,3 +31,8 @@ saudacao('Bruno')
 saudacao('Camila')
 saudacao('Shen')
 saudacao()  # => caso esteja sem valor ele irá retornar o 'Sem nome' que está definido acima
+"""
+Funções podem usar parâmetros para receber valores. Parâmetro é o nome da "variável" dentro dos parênteses, argumento é o valor passado para o parâmetro no momento da execução da função.
+
+
+"""
