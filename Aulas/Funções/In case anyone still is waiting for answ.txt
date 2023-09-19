@@ -1,0 +1,46 @@
+In case anyone still is waiting for answer, there is a solution for both Wayland and Xorg.
+
+Solution: https://forum.manjaro.org/t/caps-lock-behaviour-wayland/79868/8
+
+You will have to edit root file. Would recommend nautilus-admin if using nautilus file manager (nautilus-admin does not work properly on Ubuntu 21.10, other versions are fine), but regular chmod will do the trick.
+
+Instructions
+
+Open your file/folder manager. Navigate yourself to /usr/share/X11/xkb/symbols/ (Ctrl + L). The file you are looking for is called capslock, but before you can edit it, rights for that file need to be changed. Right click in that folder and choose Open in Temrinal.
+
+Enter command: sudo chmod 777 capslock
+
+Now open file capslock with your preferred text editor (You might want to make backup of that file just in case).
+
+Replace
+
+// This changes the <CAPS> key to become a Control modifier,
+// but it will still produce the Caps_Lock keysym.
+hidden partial modifier_keys
+xkb_symbols "ctrl_modifier" {
+replace key <CAPS> {
+type[Group1] = "ONE_LEVEL",
+symbols[Group1] = [ Caps_Lock ],
+actions[Group1] = [ SetMods(modifiers=Control) ]
+};
+modifier_map Control { <CAPS> };
+};
+with
+
+// This changes the <CAPS> key to become a Control modifier,
+// but it will still produce the Caps_Lock keysym.
+hidden partial modifier_keys
+xkb_symbols "ctrl_modifier" {
+key <CAPS> {
+type="ALPHABETIC",
+repeat=No,
+symbols[Group1]= [ Caps_Lock, Caps_Lock ],
+actions[Group1]= [ LockMods(modifiers=Lock),
+LockMods(modifiers=Shift+Lock,affect=unlock) ]
+};
+};
+Save your changes. Restore file original rights by entering sudo chmod 644 capslock into terminal.
+
+Now install GNOME Tweaks from your software store if you dont have it installed already or sudo apt install gnome-tweaks.
+
+Open GNOME Tweaks. Navigate to Keyboard & Mouse tab. Click Additional Layout Options and open Caps Lock behavior dropdown. Choose Caps Lock is also a Ctrl.

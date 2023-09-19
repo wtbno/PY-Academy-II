@@ -31,4 +31,27 @@ print(x, y, resto)
 
 
 def soma(*args):
+    total = 0
+    for numero in args:
+
+        total += numero  # acumulador
+
+    return total
     ...
+
+
+# Acumulador soma ele mesmo mais um valor
+# print(args, type(args))  # mostra o resultado de uma tupla
+
+
+soma1 = soma(1, 2, 3)
+print(soma1)
+soma2 = soma(4, 5, 6)
+print(soma2)
+numeros = (56, 89, 31, 87, 6, 48, 21, 1, 11, 39)
+soma3 = soma(*numeros)
+print(soma3)
+
+
+# função sum recebe vários argumentos como tuplas, ou somente dois diretos
+# print(sum((56, 89, 31, 87, 6, 48, 21, 1, 11, 39)))
