@@ -30,7 +30,7 @@ x, y, *resto = 1, 2, 3, 4
 print(x, y, resto)
 
 
-def soma(*args):
+def soma(*args):  # args empacota o que será enviado em uma função, dentro de uma tupla
     total = 0
     for numero in args:
 
@@ -49,9 +49,14 @@ print(soma1)
 soma2 = soma(4, 5, 6)
 print(soma2)
 numeros = (56, 89, 31, 87, 6, 48, 21, 1, 11, 39)
+# o * desempacota uma tupla para enviar como parâmetros para uma função
 soma3 = soma(*numeros)
 print(soma3)
 
+
+"""
+O operador * é usado antes de numeros na chamada da função soma. Isso é conhecido como "desempacotamento de argumentos" ou "argumentos de expansão". Ele permite que você passe os elementos de uma sequência (neste caso, uma tupla) como argumentos separados para uma função. Portanto, a função soma receberá esses valores individuais em vez de toda a tupla como um único argumento.
+"""
 
 # função sum recebe vários argumentos como tuplas, ou somente dois diretos
 # print(sum((56, 89, 31, 87, 6, 48, 21, 1, 11, 39)))
