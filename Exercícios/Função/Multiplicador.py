@@ -1,12 +1,9 @@
+def multiply(*args):
+    total = 5
+    for number in args:
+        total *= number
+    return total
 
 
-def multp(valores=(97, 65, 91, 66, 5)):
-    resultado = valores * 10
-    print(valores)
-    return resultado
-
-
-print('Fim')
-
-resultado_mult = multp()
-print(resultado_mult)
+multiplication = multiply(1, 2, 3, 4, 5)
+print(multiplication)
